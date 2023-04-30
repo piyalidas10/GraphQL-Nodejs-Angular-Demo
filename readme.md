@@ -1,5 +1,8 @@
 
 # Run Client Application
+
+Sign up MongoDB Atlas to create database. watch video for help https://www.youtube.com/watch?v=WyVwfUo18pI&list=PLB97yPrFwo5i9zDrWfvkohPec3Q6EEC9J&index=9   
+
 inside client folder run the following command
 ```
 npm start / ng serve
@@ -21,6 +24,10 @@ https://www.youtube.com/playlist?list=PLB97yPrFwo5i9zDrWfvkohPec3Q6EEC9J
 
 ## Apollo Client For Angular — Making Use of GraphQL
 https://javascript.plainenglish.io/use-of-apollo-angular-with-angular-522bcebf7bc8
+
+## Add MongoDB in your Nodejs application & create mutations, queries using GraphQL
+In this video we will connect to MongoDB Atlas using mongoose and we will create User and Quote collection or model in Hindi
+https://www.youtube.com/watch?v=WyVwfUo18pI&list=PLB97yPrFwo5i9zDrWfvkohPec3Q6EEC9J&index=9
 
 ## apollo-angular versions and peer dependencies
 https://www.npmpeer.dev/packages/apollo-angular/compatibility
