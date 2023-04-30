@@ -1,0 +1,26 @@
+{
+  "name": "node-graphql",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "engines": {
+    "node": "== 12.14.4",
+    "npm": "== 6.0.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.5.0",
+    "apollo-server-core": "^3.5.0",
+    "bcryptjs": "^2.4.3",
+    "crypto": "^1.0.1",
+    "graphql": "^15.7.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.2.0",
+    "mongoose": "^5.0.3",
+    "nodemon": "^2.0.22"
+  }
+}

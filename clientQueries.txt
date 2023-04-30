@@ -1,0 +1,217 @@
+
+************************************ GET ALL USERS **************************************************
+query getAllUsers{
+  usersAll{
+    _id
+    name
+    email
+    quotes{
+      name
+      by
+    }
+  }
+}
+
+RESULT
+-------------------------------------------------------------
+{
+  "data": {
+    "usersAll": [
+      {
+        "_id": "643d11eb0865201e4c93e0c1",
+        "name": "Bill Gates",
+        "email": "bill@gmail.com",
+        "quotes": [
+          {
+            "name": "This is first quote",
+            "by": "643d11eb0865201e4c93e0c1"
+          }
+        ]
+      },
+      {
+        "_id": "643e200c90b2a620e0ac075f",
+        "name": "James Gates",
+        "email": "james@gmail.com",
+        "quotes": []
+      }
+    ]
+  }
+}
+
+
+************************************* GET ALL QUOTES *************************************************
+query getAllQuotes{
+  quotesAll{
+    name
+    by
+  }
+}
+
+RESULT
+-------------------------------------------------------------
+{
+  "data": {
+    "quotesAll": [
+      {
+        "name": "This is first quote",
+        "by": "643d11eb0865201e4c93e0c1"
+      }
+    ]
+  }
+}
+
+
+
+********************************* GET ALL QUOTES WITH USERID & USER NAME *****************************************************
+query quotesAllWithNames{
+  quotesAllWithUsernames{
+    name
+    by{
+      _id
+      name
+    }
+  }
+}
+
+RESULT
+-------------------------------------------------------------
+{
+  "data": {
+    "quotesAllWithUsernames": [
+      {
+        "name": "This is first quote",
+        "by": {
+          "_id": "643d11eb0865201e4c93e0c1",
+          "name": "Bill Gates"
+        }
+      }
+    ]
+  }
+}
+
+
+******************************** GET USER BY ID ******************************************************
+query getUserById($userID:ID!){
+  userById(_id: $userID){
+    _id
+    name
+    email
+    quotes{
+      name
+    }
+  }
+}
+
+QUERY VARIABLES
+-------------------------------------------------------------
+{
+  "userID": "643d11eb0865201e4c93e0c1"
+}
+
+RESULT
+-------------------------------------------------------------
+{
+  "data": {
+    "userById": {
+      "_id": "643d11eb0865201e4c93e0c1",
+      "name": "Bill Gates",
+      "email": "bill@gmail.com",
+      "quotes": [
+        {
+          "name": "This is first quote"
+        }
+      ]
+    }
+  }
+}
+
+
+********************************* GET QUOTE BY USERID *****************************************************
+query getQuoteByUserID($quoteBy:ID!){
+  iquote(by: $quoteBy){
+    name
+  }
+}
+
+QUERY VARIABLES
+-------------------------------------------------------------
+{
+  "quoteBy": "643d11eb0865201e4c93e0c1"
+}
+
+RESULT
+-------------------------------------------------------------
+{
+  "data": {
+    "iquote": [
+      {
+        "name": "This is first quote"
+      }
+    ]
+  }
+}
+
+
+******************************** CREATE / INSERT USER ******************************************************
+mutation createUser($userNew:UserInput!){
+  user: signupUser(userNew: $userNew){
+    _id
+    name
+    address
+    email
+    password
+  }
+}
+
+QUERY VARIABLES
+-------------------------------------------------------------
+{
+  "userNew": {
+    "name": "Bill Gates",
+    "address": "USA",
+    "email": "bill@gmail.com",
+    "password": "12345"
+	}
+}
+
+RESULT
+-------------------------------------------------------------
+{
+  "data": {
+    "user": {
+      "_id": "643d11eb0865201e4c93e0c1",
+      "name": "Bill Gates",
+      "address": "USA",
+      "email": "bill@gmail.com",
+      "password": "$2a$12$mG8So0yvN474R4yEOhwxJuxMz3H800XlT7rzvomi9KwikCvtwEV66"
+    }
+  }
+}
+
+
+*********************************** SIGN IN USER ***************************************************
+mutation SigninUser($userSignin:UserSigninInput!) {
+  user:signinUser(userSignin:$userSignin) {
+    token
+  }
+}
+
+QUERY VARIABLES
+-------------------------------------------------------------
+{
+  "userSignin": {
+    "email": "bill@gmail.com",
+    "password": "12345"
+  }
+}
+
+RESULT
+-------------------------------------------------------------
+{
+  "data": {
+    "user": {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDNkMTFlYjA4NjUyMDFlNGM5M2UwYzEiLCJpYXQiOjE2ODE3NDg0ODB9.WtJfo0PBp-xd-Cy4jsM6C9VGDe7O-hEnClVGB1TkwUM"
+    }
+  }
+}
+
